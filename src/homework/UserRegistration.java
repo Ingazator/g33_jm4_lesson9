@@ -1,13 +1,17 @@
 package homework;
 
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 public class UserRegistration {
+    private final static Logger log = Logger.getLogger(UserRegistration.class.getName());
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("User Registration");
+        log.log(Level.INFO, "User Registration");
         System.out.print("Full Name: ");
         String fullName = scanner.nextLine();
         System.out.print("Email: ");
@@ -18,24 +22,24 @@ public class UserRegistration {
         String password = scanner.nextLine();
 
         if (!validateFullName(fullName)) {
-            System.out.println("Invalid Full Name");
+            log.log(Level.SEVERE, "Invalid Full Name");
             return;
         }
 
         if (!validateEmail(email)) {
-            System.out.println("Invalid Email");
+            log.log(Level.SEVERE, "Invalid Email");
             return;
         }
 
         if (!validatePassword(password)) {
-            System.out.println("Invalid Password");
+            log.log(Level.SEVERE, "Invalid Password");
             return;
         }
 
-        System.out.println("Registration Successful!");
-        System.out.println("Full Name: " + fullName);
-        System.out.println("Email: " + email);
-        System.out.println("Phone Number: " + phoneNumber);
+        log.log(Level.INFO, "Registration Successful!");
+        log.log(Level.INFO, "Full Name: " + fullName);
+        log.log(Level.INFO, "Email: " + email);
+        log.log(Level.INFO, "Phone Number: " + phoneNumber);
     }
 
     private static boolean validateFullName(String fullName) {
